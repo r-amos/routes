@@ -1,22 +1,53 @@
 const express = require("express");
 const routeService = require("../../../services/routes");
-
 const router = express.Router();
+const { catchAsyncErrors } = require("../../../utility");
+const multer = require("multer");
+const upload = multer({ dest: "temp/" });
+const togeojson = require("togeojson");
+const fs = require("fs");
+const DOMParser = require("xmldom").DOMParser;
 
-router.get("/", async (request, response) => {
-  const routes = await routeService.getRoutes();
-  return response.json(routes);
-});
+router.get(
+  "/",
+  catchAsyncErrors(async (request, response) => {
+    const routes = await routeService.getRoutes();
+    return response.json(routes);
+  })
+);
 
-router.get("/:id", async (request, response) => {
-  //Check Async
-  const route = await routeService.getRouteWithId(request.params.id);
-  return response.json(route);
-});
+router.get(
+  "/:id",
+  catchAsyncErrors(async (request, response) => {
+    const route = await routeService.getRouteWithId(request.params.id);
+    return response.json(route);
+  })
+);
 
-router.post("/", async (request, response) => {
-  const route = await routeService.createNewRoute(request.body);
-  response.redirect(`routes/${route._id}`);
-});
+// Apply Multer Middlware To Handle File Uploads
+router.post(
+  "/",
+  upload.single("gpx-data"),
+  catchAsyncErrors(async (request, response) => {
+    const { file } = request;
+    const text = request.body;
+    // Convert GPX to geoJSON
+    const gpx = new DOMParser().parseFromString(
+      fs.readFileSync(file.path, "utf8")
+    );
+    const routeGeoJSON = togeojson.gpx(gpx);
+    const route = await routeService.createNewRoute({
+      ...text,
+      routeGeoJSON
+    });
+    //Check Then Delete
+    if (route) {
+      fs.unlink(file.path, err => {
+        if (err) throw err;
+      });
+    }
+    response.redirect(`routes/${route._id}`);
+  })
+);
 
 module.exports = router;

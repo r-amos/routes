@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>Form</h1>
-    <form action="api/routes" method="post">
+    <form enctype='multipart/form-data' action="api/routes" method="post">
     <div>
         <label for="title">Name:</label>
         <input type="text" id="title" name="title">
@@ -19,6 +19,7 @@
         <label for="author">E-mail:</label>
         <input type="text" id="author" name="author">
     </div>
+    <input name="gpx-data" type="file">
     <button action="submit">Post</button>
     </form>
 </body>

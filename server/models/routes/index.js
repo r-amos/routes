@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const GeoJSONSchema = require("./GeoJSONSchema");
 
 const RouteSchema = new Schema({
   title: String,
-  author: String,
-  body: String,
+  user: String,
+  description: String,
+  routeGeoJSON: GeoJSONSchema,
   date: { type: Date, default: Date.now },
   comments: [
     {

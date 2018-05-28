@@ -1,4 +1,5 @@
 const Route = require("../../models/routes");
+const { MongoError } = require("mongodb");
 
 const getRoutes = () => {
   return Route.find((err, routes) => {
@@ -14,8 +15,8 @@ const getRouteWithId = id => {
   });
 };
 
-const createNewRoute = async userData => {
-  const route = new Route(userData);
+const createNewRoute = async data => {
+  const route = new Route(data);
   return await route.save();
 };
 

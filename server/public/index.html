@@ -11,16 +11,28 @@
 <body>
     <h1>Form</h1>
     <form enctype='multipart/form-data' action="api/routes" method="post">
-    <div>
-        <label for="title">Name:</label>
-        <input type="text" id="title" name="title">
-    </div>
-    <div>
-        <label for="author">E-mail:</label>
-        <input type="text" id="author" name="author">
-    </div>
-    <input name="gpx-data" type="file">
-    <button action="submit">Post</button>
+        <div>
+            <label for="title">Name:</label>
+            <input type="text" id="title" name="title">
+        </div>
+        <div>
+            <label for="author">E-mail:</label>
+            <input type="text" id="author" name="author">
+        </div>
+        <input name="gpx-data" type="file">
+        <button action="submit">Post</button>
+    </form>
+    <h2>Comments</h2>
+    <form action="api/comments" method="post">
+        <div>
+            <label for="route">RouteId:</label>
+            <input type="text" id="route" name="route">
+        </div>
+        <div>
+            <label for="author">Comment:</label>
+            <input type="text" id="body" name="body">
+        </div>
+        <button action="submit">Post</button>
     </form>
 </body>
 </html>

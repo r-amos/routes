@@ -1,5 +1,5 @@
 const db = require("./db");
-const Route = require("../models/routes");
+const Route = require("../models/routes/Route.js");
 
 db.connect(`mongodb://localhost/test2`);
 

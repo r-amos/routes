@@ -6,16 +6,18 @@ const RouteSchema = new Schema({
   title: String,
   user: String,
   description: String,
+  tags: [String],
   routeGeoJSON: GeoJSONSchema,
-  date: { type: Date, default: Date.now },
-  comments: [
-    {
-      body: String,
-      date: Date
-    }
-  ],
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  comments: {
+    type: Schema.Types.ObjectId,
+    ref: "Comment"
+  },
   meta: {
-    votes: Number
+    hearts: Number
   }
 });
 

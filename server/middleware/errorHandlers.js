@@ -7,9 +7,18 @@ const handleDatabaseError = (error, req, res, next) => {
       message: error.message
     });
   }
-  next(error);
+  next(err);
+};
+
+// TODO: Meaningful Errors
+const notFound = (req, res, next) => {
+  return res.status(404).json({
+    type: "Not Found",
+    message: "Stuff"
+  });
 };
 
 module.exports = {
-  handleDatabaseError
+  handleDatabaseError,
+  notFound
 };

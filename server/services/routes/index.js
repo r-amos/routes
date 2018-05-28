@@ -1,5 +1,4 @@
 const Route = require("../../models/routes");
-const { MongoError } = require("mongodb");
 
 const getRoutes = () => {
   return Route.find((err, routes) => {

@@ -2,7 +2,6 @@ const express = require("express");
 const routes = require("./routes");
 const db = require("./db");
 const bodyParser = require("body-parser");
-const { handleDatabaseError } = require("./middleware/errorHandlers");
 
 // Create Express Instance
 const server = express();
@@ -17,9 +16,6 @@ const create = configuration => {
   // Server Settings
   server.set("port", port);
   server.set("hostname", hostname);
-
-  // Define Global Middlewares
-  server.use(handleDatabaseError);
 
   // Set up Routes
   routes.init(server);

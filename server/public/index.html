@@ -34,5 +34,20 @@
         </div>
         <button action="submit">Post</button>
     </form>
+    <form action="api/comments" method="post">
+        <div>
+            <label for="route">RouteId:</label>
+            <input type="text" id="route" name="route">
+        </div>
+        <div>
+            <label for="route">CommentID:</label>
+            <input type="text" id="parent" name="parent">
+        </div>
+        <div>
+            <label for="author">Comment:</label>
+            <input type="text" id="body" name="body">
+        </div>
+        <button action="submit">Post</button>
+    </form>
 </body>
 </html>

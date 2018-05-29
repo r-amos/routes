@@ -28,10 +28,11 @@ router.post(
     extended: false
   }),
   catchAsyncErrors(async (request, response) => {
-    const { route, body } = request.body;
+    const { route, body, parent } = request.body;
     const comment = await commentService.createNewComment({
       content: body,
-      route: route
+      route: route,
+      parent: parent
     });
     // Link to Route
     await routeService.updateRoute(comment.route, "comments", comment._id);

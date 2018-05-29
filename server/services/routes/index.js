@@ -21,7 +21,11 @@ const createNewRoute = async data => {
 
 const updateRoute = async (id, field, value) => {
   const route = await Route.findOne({ _id: id });
-  route[field] = value;
+  if (Array.isArray(route[field])) {
+    route[field].push(value);
+  } else {
+    route[field] = value;
+  }
   route.save();
 };
 

@@ -12,10 +12,12 @@ const RouteSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  comments: {
-    type: Schema.Types.ObjectId,
-    ref: "Comment"
-  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ],
   meta: {
     hearts: Number
   }

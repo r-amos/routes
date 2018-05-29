@@ -7,7 +7,11 @@ const commentSchema = new Schema({
     ref: "Route"
   },
   name: String,
-  content: String
+  content: String,
+  parent: {
+    type: Schema.Types.ObjectId,
+    ref: "Comment"
+  }
 });
 
 const Comment = mongoose.model("Comment", commentSchema);

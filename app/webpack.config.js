@@ -24,8 +24,12 @@ const configuration = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: [path.resolve(__dirname, "src")],
+        test: /\.jsx?$/,
+        include: [
+          path.resolve(__dirname, "src/"),
+          path.resolve(__dirname, "src/components"),
+          path.resolve(__dirname, "src/containers")
+        ],
         loader: "babel-loader"
       },
       {
@@ -34,6 +38,9 @@ const configuration = {
         loader: "html-loader"
       }
     ]
+  },
+  resolve: {
+    extensions: [".js", ".jsx"]
   },
   plugins: [
     new HtmlWebPackPlugin({

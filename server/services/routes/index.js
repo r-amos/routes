@@ -2,7 +2,7 @@ const Route = require("../../models/routes/Route.js");
 const Comment = require("../../models/comments/Comment.js");
 
 const getRoutes = () => {
-  return Route.find((err, routes) => {
+  return Route.find({}, "-routeGeoJSON", (err, routes) => {
     if (err) return console.error(err);
     return routes;
   });

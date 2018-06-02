@@ -31,10 +31,19 @@ router.post(
     const { route, body, parent } = request.body;
     const comment = await commentService.createNewComment({
       content: body,
-      route: route,
-      parent: parent
+      route: route
     });
-    // Link to Route
+    // If Root Comment Just Add Comment Id, Else Get Parents Ancestors & Append
+    let ancestors = [];
+    if (!parent) {
+      ancestors.push(comment._id);
+    } else {
+      const parentComment = await commentService.getCommentWithId(parent);
+      ancestors = [...parentComment.ancestors, comment._id];
+    }
+    // Update Comment Ancestors
+    await commentService.updateComment(comment._id, "ancestors", ancestors);
+    // Add To Route
     await routeService.updateRoute(comment.route, "comments", comment._id);
     response.redirect(`comments/${comment._id}`);
   })

@@ -8,10 +8,12 @@ const commentSchema = new Schema({
   },
   name: String,
   content: String,
-  parent: {
-    type: Schema.Types.ObjectId,
-    ref: "Comment"
-  }
+  ancestors: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ]
 });
 
 const Comment = mongoose.model("Comment", commentSchema);

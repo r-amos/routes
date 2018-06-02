@@ -4,9 +4,22 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const configuration = {
   mode: "production",
   entry: "./app/src/index.js",
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: "initial",
+          name: "vendor",
+          priority: 10,
+          enforce: true
+        }
+      }
+    }
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "[name].js"
   },
   module: {
     rules: [

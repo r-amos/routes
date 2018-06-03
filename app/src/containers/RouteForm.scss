@@ -1,0 +1,27 @@
+.form {
+    margin-top: 2rem;
+
+    &__spacer {
+        margin-bottom: 2rem;
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: 1rem;
+
+    }
+
+    &__input {
+        border-radius: 1px;
+
+    }
+
+    &__textarea {
+
+    }
+
+    &__submit {
+
+    }
+
+}

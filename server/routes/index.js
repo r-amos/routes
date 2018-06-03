@@ -5,6 +5,7 @@ const setHeaders = require("../middleware/headers");
 
 // All Routing
 const init = server => {
+  //TODO: Remove
   server.use(express.static("server/public"));
   // Set Headers
   server.use(setHeaders);

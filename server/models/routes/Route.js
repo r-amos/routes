@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const GeoJSONSchema = require("./GeoJSONSchema");
 
 const RouteSchema = new Schema({
-  title: String,
+  routeTitle: String,
   user: String,
-  description: String,
+  routeDescription: String,
   tags: [String],
   routeGeoJSON: GeoJSONSchema,
   created: {

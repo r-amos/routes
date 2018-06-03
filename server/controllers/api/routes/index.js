@@ -27,7 +27,7 @@ router.get(
 // Apply Multer Middlware To Handle File Uploads
 router.post(
   "/",
-  upload.single("gpx-data"),
+  upload.single("routeGpxFile"),
   catchAsyncErrors(async (request, response) => {
     const { file } = request;
     const text = request.body;
@@ -46,7 +46,7 @@ router.post(
         if (err) throw err;
       });
     }
-    response.redirect(`routes/${route._id}`);
+    return response.json(route);
   })
 );
 

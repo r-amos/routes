@@ -1,10 +1,11 @@
+require("babel-polyfill");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const configuration = {
   mode: "production",
-  entry: "./app/src/index.js",
+  entry: ["babel-polyfill", "./app/src/index.js"],
   optimization: {
     splitChunks: {
       cacheGroups: {

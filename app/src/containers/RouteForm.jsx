@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
 import "./RouteForm.scss";
 
 class RouteForm extends Component {

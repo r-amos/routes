@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import RouteFormContainer from "./containers/RouteFormContainer";
+import RouteList from "./containers/RouteList";
 
 const App = () => {
-  return <RouteFormContainer />;
+  return <RouteList />;
 };
 
 ReactDOM.render(<App />, document.getElementById("app"));

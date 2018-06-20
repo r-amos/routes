@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import RouteList from "./containers/RouteList";
+import AppRouter from "./AppRouter";
 
 const App = () => {
-  return <RouteList />;
+  return <AppRouter />;
 };
 
 ReactDOM.render(<App />, document.getElementById("app"));

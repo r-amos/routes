@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RouteForm from "./RouteForm";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import { withRouter } from "react-router-dom";
 
 class RouteFormContainer extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class RouteFormContainer extends Component {
       this.setState({
         route: data
       });
+      this.props.history.push("/routes");
     } catch (error) {
       this.setState({
         error: true
@@ -60,4 +62,4 @@ class RouteFormContainer extends Component {
   }
 }
 
-export default RouteFormContainer;
+export default withRouter(RouteFormContainer);

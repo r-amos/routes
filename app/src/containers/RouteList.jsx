@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Loading from "../components/Loading";
 import RouteSummary from "../components/RouteSummary";
-import Route from "../components/Route";
+import { Redirect } from "react-router";
 
 class RouteList extends Component {
   constructor(props) {
@@ -55,7 +55,14 @@ class RouteList extends Component {
       return <Error />;
     }
     if (this.state.route) {
-      return <Route route={this.state.route} />;
+      return (
+        <Redirect
+          to={{
+            pathname: `/routes/${this.state.route._id}`,
+            state: { route: this.state.route }
+          }}
+        />
+      );
     }
     if (this.state.routeList) {
       return this.state.routeList.map((route, index) => {

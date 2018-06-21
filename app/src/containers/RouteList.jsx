@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Loading from "../components/Loading";
+import Navigation from "../components/Navigation";
 import RouteSummary from "../components/RouteSummary";
 import { Redirect } from "react-router";
 
@@ -58,22 +59,27 @@ class RouteList extends Component {
       return (
         <Redirect
           to={{
-            pathname: `/routes/${this.state.route._id}`,
+            pathname: `/route/${this.state.route._id}`,
             state: { route: this.state.route }
           }}
         />
       );
     }
     if (this.state.routeList) {
-      return this.state.routeList.map((route, index) => {
-        return (
-          <RouteSummary
-            key={index}
-            {...route}
-            onRouteSelect={this.onRouteSelect}
-          />
-        );
-      });
+      return (
+        <div>
+          <Navigation />
+          {this.state.routeList.map((route, index) => {
+            return (
+              <RouteSummary
+                key={index}
+                {...route}
+                onRouteSelect={this.onRouteSelect}
+              />
+            );
+          })}
+        </div>
+      );
     }
   }
 }

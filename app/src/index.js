@@ -15,8 +15,8 @@ const App = () => {
       <div>
         <ReactRoute exact path="/" component={RouteList} />
         <ReactRoute exact path="/routes" component={RouteList} />
-        <ReactRoute path="/routes/new" component={RouteFormContainer} />
-        <ReactRoute path="/routes/:id" component={Route} />
+        <ReactRoute path="/route/:id" component={Route} />
+        <ReactRoute exact path="/routes/new" component={RouteFormContainer} />
       </div>
     </Router>
   );
